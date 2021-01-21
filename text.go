@@ -17,12 +17,12 @@ type Text struct {
 
 // ParseDrawingInstructions implements the DrawingInstructionParser
 // interface
-// func (r *Text) ParseDrawingInstructions() (chan *DrawingInstruction, chan error) {
-// 	draw := make(chan *DrawingInstruction)
-// 	errs := make(chan error)
+func (r *Text) ParseDrawingInstructions() (chan *DrawingInstruction, chan error) {
+	draw := make(chan *DrawingInstruction)
+	errs := make(chan error)
 
-// 	defer close(draw)
-// 	defer close(errs)
+	defer close(draw)
+	defer close(errs)
 
-// 	return draw, errs
-// }
+	return draw, errs
+}
