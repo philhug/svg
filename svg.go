@@ -27,8 +27,8 @@ type Tuple [2]float64
 type Svg struct {
 	Title        string  `xml:"title"`
 	Groups       []Group `xml:"g"`
-	Width 		 string  `xml:"width,attr"`
-	Height 		 string  `xml:"height,attr"`
+	Width        string  `xml:"width,attr"`
+	Height       string  `xml:"height,attr"`
 	ViewBox      string  `xml:"viewBox,attr"`
 	Elements     []DrawingInstructionParser
 	Name         string
@@ -133,6 +133,8 @@ func (g *Group) UnmarshalXML(decoder *xml.Decoder, start xml.StartElement) error
 				elementStruct = &Circle{group: g}
 			case "path":
 				elementStruct = &Path{group: g, StrokeWidth: float64(g.StrokeWidth), Stroke: &g.Stroke, Fill: &g.Fill}
+			case "text":
+				elementStruct = &Text{group: g}
 			default:
 				continue
 			}
