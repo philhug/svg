@@ -1,4 +1,4 @@
-module github.com/jueewo/svg
+module github.com/jueewo/svg/v2
 
 go 1.16
 
