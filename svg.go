@@ -25,18 +25,18 @@ type Tuple [2]float64
 // Svg represents an SVG file containing at least a top level group or a
 // number of Paths
 type Svg struct {
-	Title        string  `xml:"title"`
-	Groups       []Group `xml:"g"`
-	Width        string  `xml:"width,attr"`
-	Height       string  `xml:"height,attr"`
-	ViewBox      string  `xml:"viewBox,attr"`
-	Elements     []DrawingInstructionParser
-	Name         string
-	Transform    *mt.Transform
-	scale        float64
-	instructions chan *DrawingInstruction
-	errors       chan error
-	segments     chan Segment
+	Title        string                     `xml:"title"`
+	Groups       []Group                    `xml:"g"`
+	Width        string                     `xml:"width,attr"`
+	Height       string                     `xml:"height,attr"`
+	ViewBox      string                     `xml:"viewBox,attr"`
+	Elements     []DrawingInstructionParser `xml:"-"`
+	Name         string                     `xml:"-"`
+	Transform    *mt.Transform              `xml:"-"`
+	scale        float64                    `xml:"-"`
+	instructions chan *DrawingInstruction   `xml:"-"`
+	errors       chan error                 `xml:"-"`
+	segments     chan Segment               `xml:"-"`
 }
 
 // Group represents an SVG group (usually located in a 'g' XML element)
